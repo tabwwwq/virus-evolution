@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus Evolution</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- ====== CREATION SCREEN ====== -->
+<div id="creation-screen" class="screen">
+  <div class="creation-container">
+    <h1 class="creation-title">🦠 VIRUS EVOLUTION</h1>
+    <p class="creation-subtitle">Engineer a pathogen. Infect the world. Dominate all 18 regions.</p>
+
+    <div class="form-group">
+      <label>VIRUS NAME</label>
+      <input type="text" id="virus-name-input" placeholder="e.g. NecrX-7 · BloodHaze · VoidStrain" maxlength="30">
+    </div>
+
+    <div>
+      <div class="section-title">SELECT VIRUS TYPE</div>
+      <div class="virus-grid" id="virus-grid">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">SELECT HOST</div>
+      <div class="host-grid" id="host-grid">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">DIFFICULTY</div>
+      <div class="difficulty-grid" id="difficulty-grid">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <button class="start-btn" id="start-btn" onclick="startGame()">⚡ RELEASE THE VIRUS ⚡</button>
+  </div>
+</div>
+
+<!-- ====== GAME SCREEN ====== -->
+<div id="game-screen" class="screen">
+
+  <!-- HUD -->
+  <div id="hud">
+    <div id="hud-virus-icon" class="hud-virus-icon"></div>
+    <div class="hud-virus-name" id="hud-virus-name">—</div>
+    <div class="hud-divider"></div>
+    <div class="hud-stat">
+      <span class="hud-stat-label">EP</span>
+      <span class="hud-stat-value ep" id="hud-ep">0</span>
+    </div>
+    <div class="hud-stat">
+      <span class="hud-stat-label">EP/SEC</span>
+      <span class="hud-stat-value ep" id="hud-epsec">0.0</span>
+    </div>
+    <div class="hud-divider"></div>
+    <div class="hud-stat">
+      <span class="hud-stat-label">INFECTED</span>
+      <span class="hud-stat-value" id="hud-infected">0</span>
+    </div>
+    <div class="hud-stat">
+      <span class="hud-stat-label">WORLD %</span>
+      <span class="hud-stat-value" id="hud-pct">0.0%</span>
+    </div>
+    <div class="hud-divider"></div>
+    <div class="hud-stat">
+      <span class="hud-stat-label">REGIONS</span>
+      <span class="hud-stat-value" id="hud-regions">0/18</span>
+    </div>
+    <div class="hud-progress">
+      <div class="hud-progress-fill" id="hud-progress-fill" style="width:0%"></div>
+    </div>
+    <div class="hud-divider"></div>
+    <div class="day-counter" id="hud-day">DAY 0</div>
+    <div class="hud-divider"></div>
+    <div class="speed-controls">
+      <button class="speed-btn" onclick="setSpeed(0)">⏸</button>
+      <button class="speed-btn active" onclick="setSpeed(1)">1×</button>
+      <button class="speed-btn" onclick="setSpeed(2)">2×</button>
+      <button class="speed-btn" onclick="setSpeed(5)">5×</button>
+      <button class="speed-btn" onclick="setSpeed(10)">10×</button>
+    </div>
+    <div class="hud-divider"></div>
+    <button class="hud-btn" onclick="toggleAIPanel()">🤖 RIVALS</button>
+  </div>
+
+  <!-- Game layout -->
+  <div id="game-layout">
+
+    <!-- World Map -->
+    <div id="map-container">
+      <svg id="world-map" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Regions injected by JS -->
+      </svg>
+      <!-- Map tooltip -->
+      <div class="map-tooltip" id="map-tooltip" style="display:none;"></div>
+      <!-- Map legend -->
+      <div id="map-legend">
+        <div class="legend-title">CLIMATE</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#6688aa"></div> Cold</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#44aa66"></div> Temperate</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#aa6622"></div> Tropical</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#cc8833"></div> Desert/Hot</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#3366aa"></div> Aquatic</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#4422aa"></div> Extreme Cold</div>
+      </div>
+      <!-- Notifications -->
+      <div id="notifications"></div>
+    </div>
+
+    <!-- Upgrade Panel -->
+    <div id="upgrade-panel">
+      <div class="panel-header">
+        <span>UPGRADES</span>
+        <span class="ep-display" id="panel-ep">⚡ 0 EP</span>
+      </div>
+      <div class="upgrade-tabs">
+        <button class="upgrade-tab active" onclick="switchTab('environment')">🌡 ENV</button>
+        <button class="upgrade-tab" onclick="switchTab('transmission')">🦠 TRANS</button>
+        <button class="upgrade-tab" onclick="switchTab('survival')">🛡 SURV</button>
+        <button class="upgrade-tab" onclick="switchTab('lethality')">☠ LETHAL</button>
+        <button class="upgrade-tab" onclick="switchTab('special')">🔬 SPEC</button>
+      </div>
+      <div class="upgrade-list" id="upgrade-list">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <!-- Region Detail Panel -->
+    <div class="side-panel" id="region-panel">
+      <div class="side-panel-header">
+        <span class="side-panel-title" id="region-panel-title">REGION</span>
+        <button class="close-btn" onclick="closeRegionPanel()">✕</button>
+      </div>
+      <div class="side-panel-content" id="region-panel-content">
+      </div>
+    </div>
+
+    <!-- AI Viruses Panel -->
+    <div class="side-panel" id="ai-panel">
+      <div class="side-panel-header">
+        <span class="side-panel-title">🤖 RIVAL VIRUSES</span>
+        <button class="close-btn" onclick="toggleAIPanel()">✕</button>
+      </div>
+      <div class="side-panel-content" id="ai-panel-content">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WIN SCREEN -->
+<div id="win-screen" class="screen" style="display:none;">
+  <h1 class="win-title orbitron">🏆 PANDEMIC COMPLETE</h1>
+  <p id="win-subtitle" style="font-size:1.2em; color:rgba(0,255,136,0.8);"></p>
+  <div class="result-stats" id="win-stats"></div>
+  <button class="play-again-btn" onclick="location.reload()">↺ PLAY AGAIN</button>
+</div>
+
+<!-- LOSE SCREEN -->
+<div id="lose-screen" class="screen" style="display:none;">
+  <h1 class="lose-title orbitron">💀 VIRUS EXTINCT</h1>
+  <p id="lose-subtitle" style="font-size:1.2em; color:rgba(255,34,68,0.8);"></p>
+  <div class="result-stats" id="lose-stats"></div>
+  <button class="play-again-btn" onclick="location.reload()">↺ TRY AGAIN</button>
+</div>
+
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
