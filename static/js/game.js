@@ -283,51 +283,51 @@ const ALL_UPGRADES = Object.values(UPGRADES_DEFINITION).flat();
 const REGIONS = [
   { id: 'na_north', name: 'North America (North)', climate: 'cold', pop: 120000000, x: 130, y: 80, w: 110, h: 70,
     climateReq: { cold1: 1 }, penalty: 0.05,
-    path: 'M100,55 L210,55 L220,90 L200,130 L130,130 L100,90 Z' },
+    path: 'M100,55 C152,47 196,47 222,58 C234,78 230,110 216,130 C200,148 170,155 138,152 C106,149 80,133 76,110 C72,86 78,63 100,55 Z' },
   { id: 'na_south', name: 'North America (South)', climate: 'temperate', pop: 200000000, x: 130, y: 145,
-    path: 'M110,135 L220,135 L215,185 L150,195 L110,185 Z' },
+    path: 'M110,135 C154,127 198,127 222,138 C230,158 228,182 219,198 C208,214 182,222 150,222 C118,220 93,208 83,193 C75,178 80,157 110,135 Z' },
   { id: 'central_am', name: 'Central America', climate: 'tropical', pop: 50000000, x: 140, y: 200,
-    path: 'M140,195 L195,195 L190,225 L155,230 L135,220 Z' },
+    path: 'M140,195 C162,188 186,188 196,200 C204,216 200,234 184,244 C168,252 144,252 128,242 C118,232 116,214 140,195 Z' },
   { id: 'sa_north', name: 'South America (North)', climate: 'tropical', pop: 130000000, x: 175, y: 235,
-    path: 'M155,235 L230,230 L240,285 L200,300 L155,285 Z' },
+    path: 'M155,235 C188,225 228,224 250,238 C268,260 264,292 247,316 C229,338 196,344 168,340 C140,336 120,314 114,288 C108,263 118,244 155,235 Z' },
   { id: 'sa_south', name: 'South America (South)', climate: 'temperate', pop: 80000000, x: 175, y: 305,
-    path: 'M165,300 L225,300 L215,375 L180,380 L160,360 Z' },
+    path: 'M165,300 C190,292 220,292 238,306 C250,330 246,364 227,385 C208,402 182,407 161,399 C140,390 128,366 123,340 C118,321 130,303 165,300 Z' },
   { id: 'west_europe', name: 'Western Europe', climate: 'temperate', pop: 260000000, x: 390, y: 90,
     medResist: 1.5,
-    path: 'M370,75 L440,70 L450,110 L430,130 L370,125 L360,105 Z' },
+    path: 'M370,75 C400,66 432,65 453,78 C468,96 465,122 452,138 C437,156 405,162 378,158 C350,154 335,135 334,113 C332,92 345,79 370,75 Z' },
   { id: 'east_europe', name: 'Eastern Europe', climate: 'cold', pop: 160000000, x: 455, y: 90,
     climateReq: { cold1: 1 },
-    path: 'M440,72 L520,68 L525,120 L450,125 L440,112 Z' },
+    path: 'M440,72 C476,62 514,61 527,72 C538,88 535,118 524,130 C510,146 478,152 454,144 C432,135 428,110 436,88 Z' },
   { id: 'north_africa', name: 'North Africa', climate: 'hot', pop: 220000000, x: 390, y: 185,
     climateReq: { heat1: 2 },
-    path: 'M340,175 L520,170 L525,230 L345,235 Z' },
+    path: 'M340,175 C395,165 462,163 525,175 C538,196 537,232 522,252 C480,268 383,270 338,258 C322,238 321,202 340,175 Z' },
   { id: 'west_africa', name: 'West Africa', climate: 'tropical', pop: 380000000, x: 350, y: 245,
-    path: 'M330,240 L410,238 L415,295 L335,300 Z' },
+    path: 'M330,240 C358,232 396,230 418,244 C429,264 426,296 410,320 C393,336 360,340 334,332 C312,322 304,298 312,270 Z' },
   { id: 'central_africa', name: 'Central Africa', climate: 'tropical', pop: 190000000, x: 430, y: 255,
-    path: 'M415,240 L500,238 L505,305 L418,308 Z' },
+    path: 'M415,240 C448,232 494,232 510,246 C522,266 519,300 506,325 C490,342 456,348 432,340 C413,330 408,305 414,276 Z' },
   { id: 'east_africa', name: 'East Africa', climate: 'tropical', pop: 460000000, x: 510, y: 245,
-    path: 'M500,238 L555,235 L565,310 L502,312 Z' },
+    path: 'M500,238 C526,230 558,230 568,244 C582,266 580,302 565,330 C550,350 522,356 500,346 C484,334 482,306 488,278 Z' },
   { id: 'south_africa', name: 'Southern Africa', climate: 'temperate', pop: 130000000, x: 440, y: 315,
-    path: 'M420,312 L560,312 L555,375 L490,390 L430,375 Z' },
+    path: 'M420,312 C456,302 530,302 560,316 C572,340 568,374 550,398 C524,422 460,428 436,420 C412,412 398,386 394,358 C390,336 400,318 420,312 Z' },
   { id: 'middle_east', name: 'Middle East', climate: 'hot', pop: 190000000, x: 530, y: 155,
     climateReq: { heat1: 2 },
-    path: 'M520,140 L600,135 L610,195 L525,200 Z' },
+    path: 'M520,140 C548,130 588,130 612,144 C626,168 622,204 606,224 C588,244 552,250 522,238 C498,226 494,196 502,168 Z' },
   { id: 'central_asia', name: 'Central Asia', climate: 'cold', pop: 100000000, x: 605, y: 100,
     climateReq: { cold1: 2 },
-    path: 'M590,80 L720,75 L725,135 L600,140 Z' },
+    path: 'M590,80 C638,70 690,68 728,82 C742,102 740,138 726,158 C708,175 672,182 634,178 C596,174 574,158 570,134 C566,110 572,87 590,80 Z' },
   { id: 'south_asia', name: 'South Asia', climate: 'tropical', pop: 1900000000, x: 645, y: 180,
-    path: 'M615,165 L730,160 L740,230 L680,245 L620,235 Z' },
+    path: 'M615,165 C652,155 706,153 742,168 C758,194 754,238 737,268 C716,292 676,302 641,296 C606,290 582,264 578,232 C574,200 584,170 615,165 Z' },
   { id: 'east_asia', name: 'East Asia', climate: 'temperate', pop: 1600000000, x: 740, y: 110,
     medResist: 1.4,
-    path: 'M725,80 L850,75 L860,170 L735,175 L728,140 Z' },
+    path: 'M725,80 C772,70 828,68 862,84 C878,108 874,164 858,192 C838,212 795,218 758,213 C720,208 704,186 700,158 C696,128 704,88 725,80 Z' },
   { id: 'se_asia', name: 'Southeast Asia', climate: 'tropical', pop: 680000000, x: 750, y: 220,
-    path: 'M735,200 L820,195 L840,255 L760,270 Z' },
+    path: 'M735,200 C763,191 806,190 843,206 C858,230 855,268 836,295 C814,316 771,322 738,312 C712,302 704,275 710,250 Z' },
   { id: 'oceania', name: 'Oceania', climate: 'temperate', pop: 43000000, x: 815, y: 330,
     climateReq: { aqua1: 2 },
-    path: 'M790,315 L890,310 L895,370 L790,375 Z' },
+    path: 'M790,315 C824,304 870,304 898,318 C913,342 910,378 892,402 C868,424 815,430 782,420 C756,412 748,384 752,352 Z' },
   { id: 'arctic', name: 'Arctic/Greenland', climate: 'extreme', pop: 500000, x: 230, y: 25,
     climateReq: { cold1: 3 }, penalty: 0.2,
-    path: 'M200,15 L340,12 L345,45 L205,48 Z' }
+    path: 'M200,12 C255,7 308,8 345,14 C352,24 350,38 341,47 C304,56 225,55 198,45 C190,35 190,18 200,12 Z' }
 ];
 
 // Color palette for 19 regions
@@ -999,6 +999,7 @@ function flashUpgradeCard(upgradeId) {
 function openRegionPanel(regionId) {
   G.selectedRegion = regionId;
   renderRegionPanel(regionId);
+  document.getElementById('ai-panel').classList.remove('open');
   document.getElementById('region-panel').classList.add('open');
 }
 
@@ -1077,6 +1078,8 @@ function toggleAIPanel() {
   if (isOpen) {
     panel.classList.remove('open');
   } else {
+    document.getElementById('region-panel').classList.remove('open');
+    G.selectedRegion = null;
     renderAIPanel();
     panel.classList.add('open');
   }
@@ -1185,6 +1188,18 @@ function startGame() {
 // ===================== WORLD MAP BUILDING =====================
 function buildWorldMap() {
   const svg = document.getElementById('world-map');
+
+  // Add ocean background if not already present
+  if (!svg.querySelector('#ocean-bg')) {
+    const ocean = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    ocean.setAttribute('x', '0');
+    ocean.setAttribute('y', '0');
+    ocean.setAttribute('width', '960');
+    ocean.setAttribute('height', '540');
+    ocean.setAttribute('fill', '#0a1628');
+    ocean.setAttribute('id', 'ocean-bg');
+    svg.insertBefore(ocean, svg.firstChild);
+  }
 
   // Clear existing regions
   svg.querySelectorAll('.region, .region-label').forEach(e => e.remove());
