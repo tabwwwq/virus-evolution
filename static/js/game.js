@@ -389,8 +389,8 @@ function initGameState(virusName, virusTypeId, hostId, diffId) {
   };
 
   // Give player initial infection in start region
-  G.regionStates['na_south'].virusInfections['player'] = Math.floor(G.regionStates['na_south'].totalPop * 0.001);
-  G.regionStates['na_south'].healthy -= G.regionStates['na_south'].virusInfections['player'];
+  G.regionStates[G.startRegion].virusInfections['player'] = Math.floor(G.regionStates[G.startRegion].totalPop * 0.001);
+  G.regionStates[G.startRegion].healthy -= G.regionStates[G.startRegion].virusInfections['player'];
 }
 
 // ===================== GAME LOOP =====================
@@ -1103,7 +1103,7 @@ function renderAIPanel() {
 
     return `
       <div class="ai-virus-item">
-        <div class="ai-icon ${evolveClass}" style="color:${ai.color}">${vt ? vt.svg.replace(/>/,'style="width:44px;height:44px" color="${ai.color}">')  : ''}</div>
+        <div class="ai-icon ${evolveClass}" style="color:${ai.color}">${vt ? vt.svg.replace(/^(<svg[^>]*)>/, '$1 style="width:44px;height:44px">') : ''}</div>
         <div style="flex:1;min-width:0">
           <div class="ai-virus-name" style="color:${ai.color}">${ai.name}</div>
           <div class="ai-virus-info">${host ? host.emoji : ''} ${host ? host.name : ''} · ${formatNum(aiInfected)} infected · ${aiRegions} regions</div>
@@ -1122,7 +1122,7 @@ function buildCreationScreen() {
   // Virus grid
   const vgrid = document.getElementById('virus-grid');
   vgrid.innerHTML = VIRUS_TYPES.map(vt => `
-    <div class="virus-card ${vt.id === selectedVirusType ? 'selected' : ''}" onclick="selectVirusType('${vt.id}')">
+    <div class="virus-card ${vt.id === selectedVirusType ? 'selected' : ''}" onclick="selectVirusType('${vt.id}', this)">
       ${vt.svg}
       <div class="virus-card-name">${vt.name}</div>
     </div>`).join('');
@@ -1130,7 +1130,7 @@ function buildCreationScreen() {
   // Host grid
   const hgrid = document.getElementById('host-grid');
   hgrid.innerHTML = HOST_TYPES.map(h => `
-    <div class="host-card ${h.id === selectedHost ? 'selected' : ''}" onclick="selectHost('${h.id}')">
+    <div class="host-card ${h.id === selectedHost ? 'selected' : ''}" onclick="selectHost('${h.id}', this)">
       <div class="host-emoji">${h.emoji}</div>
       <div class="host-name">${h.name}</div>
       <div class="host-desc">${h.desc}</div>
@@ -1139,28 +1139,28 @@ function buildCreationScreen() {
   // Difficulty
   const dgrid = document.getElementById('difficulty-grid');
   dgrid.innerHTML = DIFFICULTIES.map(d => `
-    <div class="diff-card ${d.id === selectedDifficulty ? 'selected' : ''}" onclick="selectDifficulty('${d.id}')">
+    <div class="diff-card ${d.id === selectedDifficulty ? 'selected' : ''}" onclick="selectDifficulty('${d.id}', this)">
       <div class="diff-name">${d.name}</div>
       <div class="diff-desc">${d.desc}</div>
     </div>`).join('');
 }
 
-function selectVirusType(id) {
+function selectVirusType(id, el) {
   selectedVirusType = id;
-  document.querySelectorAll('.virus-card').forEach(el => el.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
+  document.querySelectorAll('.virus-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
 }
 
-function selectHost(id) {
+function selectHost(id, el) {
   selectedHost = id;
-  document.querySelectorAll('.host-card').forEach(el => el.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
+  document.querySelectorAll('.host-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
 }
 
-function selectDifficulty(id) {
+function selectDifficulty(id, el) {
   selectedDifficulty = id;
-  document.querySelectorAll('.diff-card').forEach(el => el.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
+  document.querySelectorAll('.diff-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
 }
 
 function startGame() {
