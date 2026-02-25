@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
   --bg: #0a0a0f;
@@ -19,7 +19,7 @@
 body {
   background: var(--bg);
   color: #e0e0ff;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', 'Rajdhani', sans-serif;
   font-size: 15px;
   overflow: hidden;
   height: 100vh;
@@ -206,7 +206,7 @@ h1, h2, h3, .orbitron {
   color: var(--blue);
   letter-spacing: 1px;
 }
-.host-desc { font-size: 0.78em; color: rgba(200,200,255,0.6); }
+.host-desc { font-family: 'Inter', sans-serif; font-size: 0.82em; color: rgba(220, 225, 255, 0.8); }
 
 /* Difficulty */
 .difficulty-grid {
@@ -237,7 +237,7 @@ h1, h2, h3, .orbitron {
   color: var(--orange);
   margin-bottom: 4px;
 }
-.diff-desc { font-size: 0.8em; color: rgba(200,200,255,0.6); }
+.diff-desc { font-family: 'Inter', sans-serif; font-size: 0.82em; color: rgba(220, 225, 255, 0.8); }
 
 /* Start button */
 .start-btn {
@@ -307,10 +307,10 @@ h1, h2, h3, .orbitron {
 }
 
 .hud-stat-label {
-  font-size: 0.6em;
+  font-size: 0.65em;
   color: rgba(0,255,136,0.5);
   letter-spacing: 1px;
-  font-family: 'Orbitron', monospace;
+  font-family: 'Inter', sans-serif;
 }
 
 .hud-stat-value {
@@ -390,14 +390,14 @@ h1, h2, h3, .orbitron {
 .region {
   cursor: pointer;
   transition: filter 0.3s;
-  stroke: rgba(0,255,136,0.15);
-  stroke-width: 0.5;
+  stroke: rgba(0,255,136,0.5);
+  stroke-width: 1.2;
 }
 
 .region:hover {
   filter: brightness(1.4);
   stroke: rgba(0,255,136,0.8);
-  stroke-width: 1;
+  stroke-width: 1.5;
 }
 
 .region.infected {
@@ -410,11 +410,12 @@ h1, h2, h3, .orbitron {
 }
 
 .region-label {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 7px;
-  fill: rgba(255,255,255,0.5);
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  fill: rgba(255,255,255,0.75);
   pointer-events: none;
   text-anchor: middle;
+  font-weight: 600;
 }
 
 /* Upgrade panel */
@@ -549,8 +550,9 @@ h1, h2, h3, .orbitron {
 }
 
 .upgrade-desc {
-  font-size: 0.78em;
-  color: rgba(200,210,255,0.65);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82em;
+  color: rgba(220, 225, 255, 0.8);
   line-height: 1.4;
   margin-bottom: 6px;
 }
@@ -738,8 +740,9 @@ h1, h2, h3, .orbitron {
 }
 
 .ai-virus-info {
-  font-size: 0.78em;
-  color: rgba(200,200,255,0.6);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82em;
+  color: rgba(220, 225, 255, 0.8);
 }
 
 .ai-power-bar {
@@ -777,7 +780,7 @@ h1, h2, h3, .orbitron {
   margin-bottom: 4px;
 }
 
-.map-tooltip-info { color: rgba(200,210,255,0.8); }
+.map-tooltip-info { font-family: 'Inter', sans-serif; color: rgba(220, 225, 255, 0.8); }
 
 /* Particles */
 .particle {

@@ -281,53 +281,53 @@ const ALL_UPGRADES = Object.values(UPGRADES_DEFINITION).flat();
 
 // ===================== WORLD REGIONS =====================
 const REGIONS = [
-  { id: 'na_north', name: 'North America (North)', climate: 'cold', pop: 120000000, x: 130, y: 80, w: 110, h: 70,
+  { id: 'na_north', name: 'North America (North)', climate: 'cold', pop: 120000000, x: 140, y: 105,
     climateReq: { cold1: 1 }, penalty: 0.05,
-    path: 'M100,55 C152,47 196,47 222,58 C234,78 230,110 216,130 C200,148 170,155 138,152 C106,149 80,133 76,110 C72,86 78,63 100,55 Z' },
-  { id: 'na_south', name: 'North America (South)', climate: 'temperate', pop: 200000000, x: 130, y: 145,
-    path: 'M110,135 C154,127 198,127 222,138 C230,158 228,182 219,198 C208,214 182,222 150,222 C118,220 93,208 83,193 C75,178 80,157 110,135 Z' },
-  { id: 'central_am', name: 'Central America', climate: 'tropical', pop: 50000000, x: 140, y: 200,
-    path: 'M140,195 C162,188 186,188 196,200 C204,216 200,234 184,244 C168,252 144,252 128,242 C118,232 116,214 140,195 Z' },
-  { id: 'sa_north', name: 'South America (North)', climate: 'tropical', pop: 130000000, x: 175, y: 235,
-    path: 'M155,235 C188,225 228,224 250,238 C268,260 264,292 247,316 C229,338 196,344 168,340 C140,336 120,314 114,288 C108,263 118,244 155,235 Z' },
-  { id: 'sa_south', name: 'South America (South)', climate: 'temperate', pop: 80000000, x: 175, y: 305,
-    path: 'M165,300 C190,292 220,292 238,306 C250,330 246,364 227,385 C208,402 182,407 161,399 C140,390 128,366 123,340 C118,321 130,303 165,300 Z' },
-  { id: 'west_europe', name: 'Western Europe', climate: 'temperate', pop: 260000000, x: 390, y: 90,
+    path: 'M65,55 C105,48 165,50 218,58 C225,78 222,125 210,148 C192,162 148,168 98,158 C68,148 60,122 62,95 C63,75 65,60 65,55 Z' },
+  { id: 'na_south', name: 'North America (South)', climate: 'temperate', pop: 200000000, x: 132, y: 185,
+    path: 'M68,148 C108,140 168,138 200,150 C212,170 210,205 200,222 C182,235 148,238 108,232 C78,225 65,208 65,192 C65,175 67,155 68,148 Z' },
+  { id: 'central_am', name: 'Central America', climate: 'tropical', pop: 50000000, x: 148, y: 240,
+    path: 'M122,222 C142,215 170,215 180,225 C188,240 185,258 172,265 C156,272 132,270 120,260 C112,250 112,232 122,222 Z' },
+  { id: 'sa_north', name: 'South America (North)', climate: 'tropical', pop: 130000000, x: 195, y: 292,
+    path: 'M133,248 C175,238 228,236 265,250 C280,272 278,315 260,338 C240,355 198,362 165,354 C135,345 115,318 115,290 C115,268 128,252 133,248 Z' },
+  { id: 'sa_south', name: 'South America (South)', climate: 'temperate', pop: 80000000, x: 180, y: 378,
+    path: 'M145,333 C178,323 220,322 232,338 C244,360 240,398 222,420 C202,438 168,440 150,430 C132,420 122,395 125,368 C127,348 138,338 145,333 Z' },
+  { id: 'west_europe', name: 'Western Europe', climate: 'temperate', pop: 260000000, x: 408, y: 112,
     medResist: 1.5,
-    path: 'M370,75 C400,66 432,65 453,78 C468,96 465,122 452,138 C437,156 405,162 378,158 C350,154 335,135 334,113 C332,92 345,79 370,75 Z' },
-  { id: 'east_europe', name: 'Eastern Europe', climate: 'cold', pop: 160000000, x: 455, y: 90,
+    path: 'M358,65 C395,58 438,58 460,72 C472,92 470,132 455,152 C438,170 402,175 372,168 C345,160 335,135 338,108 C340,85 348,70 358,65 Z' },
+  { id: 'east_europe', name: 'Eastern Europe', climate: 'cold', pop: 160000000, x: 502, y: 108,
     climateReq: { cold1: 1 },
-    path: 'M440,72 C476,62 514,61 527,72 C538,88 535,118 524,130 C510,146 478,152 454,144 C432,135 428,110 436,88 Z' },
-  { id: 'north_africa', name: 'North Africa', climate: 'hot', pop: 220000000, x: 390, y: 185,
+    path: 'M452,58 C488,50 528,50 552,65 C564,85 560,128 545,150 C526,168 490,172 462,162 C438,152 435,122 442,92 C445,75 450,62 452,58 Z' },
+  { id: 'north_africa', name: 'North Africa', climate: 'hot', pop: 220000000, x: 445, y: 210,
     climateReq: { heat1: 2 },
-    path: 'M340,175 C395,165 462,163 525,175 C538,196 537,232 522,252 C480,268 383,270 338,258 C322,238 321,202 340,175 Z' },
-  { id: 'west_africa', name: 'West Africa', climate: 'tropical', pop: 380000000, x: 350, y: 245,
-    path: 'M330,240 C358,232 396,230 418,244 C429,264 426,296 410,320 C393,336 360,340 334,332 C312,322 304,298 312,270 Z' },
-  { id: 'central_africa', name: 'Central Africa', climate: 'tropical', pop: 190000000, x: 430, y: 255,
-    path: 'M415,240 C448,232 494,232 510,246 C522,266 519,300 506,325 C490,342 456,348 432,340 C413,330 408,305 414,276 Z' },
-  { id: 'east_africa', name: 'East Africa', climate: 'tropical', pop: 460000000, x: 510, y: 245,
-    path: 'M500,238 C526,230 558,230 568,244 C582,266 580,302 565,330 C550,350 522,356 500,346 C484,334 482,306 488,278 Z' },
-  { id: 'south_africa', name: 'Southern Africa', climate: 'temperate', pop: 130000000, x: 440, y: 315,
-    path: 'M420,312 C456,302 530,302 560,316 C572,340 568,374 550,398 C524,422 460,428 436,420 C412,412 398,386 394,358 C390,336 400,318 420,312 Z' },
-  { id: 'middle_east', name: 'Middle East', climate: 'hot', pop: 190000000, x: 530, y: 155,
+    path: 'M332,168 C392,160 472,158 555,170 C570,192 568,235 552,258 C505,275 385,276 338,262 C320,242 320,202 332,168 Z' },
+  { id: 'west_africa', name: 'West Africa', climate: 'tropical', pop: 380000000, x: 360, y: 300,
+    path: 'M310,252 C345,242 395,240 418,255 C430,278 428,318 410,342 C392,360 355,365 328,355 C305,344 298,318 306,290 C308,272 308,256 310,252 Z' },
+  { id: 'central_africa', name: 'Central Africa', climate: 'tropical', pop: 190000000, x: 460, y: 298,
+    path: 'M407,248 C445,238 496,238 515,252 C528,275 526,318 510,342 C490,362 452,368 426,358 C406,348 400,318 406,288 C406,268 406,252 407,248 Z' },
+  { id: 'east_africa', name: 'East Africa', climate: 'tropical', pop: 460000000, x: 535, y: 300,
+    path: 'M492,242 C522,232 562,232 578,248 C592,272 590,315 572,342 C553,368 522,375 498,364 C478,352 476,318 484,288 C488,268 490,248 492,242 Z' },
+  { id: 'south_africa', name: 'Southern Africa', climate: 'temperate', pop: 130000000, x: 472, y: 388,
+    path: 'M397,342 C440,330 518,330 552,348 C570,375 568,418 546,440 C518,458 448,462 416,448 C390,436 380,408 382,378 C384,358 392,348 397,342 Z' },
+  { id: 'middle_east', name: 'Middle East', climate: 'hot', pop: 190000000, x: 575, y: 185,
     climateReq: { heat1: 2 },
-    path: 'M520,140 C548,130 588,130 612,144 C626,168 622,204 606,224 C588,244 552,250 522,238 C498,226 494,196 502,168 Z' },
-  { id: 'central_asia', name: 'Central Asia', climate: 'cold', pop: 100000000, x: 605, y: 100,
+    path: 'M515,138 C550,128 602,126 632,142 C648,168 644,208 626,232 C606,252 562,258 532,242 C508,228 504,198 512,168 C514,150 514,142 515,138 Z' },
+  { id: 'central_asia', name: 'Central Asia', climate: 'cold', pop: 100000000, x: 660, y: 118,
     climateReq: { cold1: 2 },
-    path: 'M590,80 C638,70 690,68 728,82 C742,102 740,138 726,158 C708,175 672,182 634,178 C596,174 574,158 570,134 C566,110 572,87 590,80 Z' },
-  { id: 'south_asia', name: 'South Asia', climate: 'tropical', pop: 1900000000, x: 645, y: 180,
-    path: 'M615,165 C652,155 706,153 742,168 C758,194 754,238 737,268 C716,292 676,302 641,296 C606,290 582,264 578,232 C574,200 584,170 615,165 Z' },
-  { id: 'east_asia', name: 'East Asia', climate: 'temperate', pop: 1600000000, x: 740, y: 110,
+    path: 'M568,75 C622,65 698,62 752,78 C768,100 765,145 748,165 C722,182 648,188 605,180 C568,172 558,148 562,118 C564,95 566,80 568,75 Z' },
+  { id: 'south_asia', name: 'South Asia', climate: 'tropical', pop: 1900000000, x: 675, y: 228,
+    path: 'M605,158 C648,148 715,145 750,162 C768,192 764,248 745,280 C725,308 680,318 645,310 C608,302 588,268 588,232 C588,198 595,165 605,158 Z' },
+  { id: 'east_asia', name: 'East Asia', climate: 'temperate', pop: 1600000000, x: 802, y: 138,
     medResist: 1.4,
-    path: 'M725,80 C772,70 828,68 862,84 C878,108 874,164 858,192 C838,212 795,218 758,213 C720,208 704,186 700,158 C696,128 704,88 725,80 Z' },
-  { id: 'se_asia', name: 'Southeast Asia', climate: 'tropical', pop: 680000000, x: 750, y: 220,
-    path: 'M735,200 C763,191 806,190 843,206 C858,230 855,268 836,295 C814,316 771,322 738,312 C712,302 704,275 710,250 Z' },
-  { id: 'oceania', name: 'Oceania', climate: 'temperate', pop: 43000000, x: 815, y: 330,
+    path: 'M722,68 C775,58 850,56 882,75 C898,105 895,168 878,198 C858,222 810,228 768,220 C728,212 712,182 715,148 C718,115 720,78 722,68 Z' },
+  { id: 'se_asia', name: 'Southeast Asia', climate: 'tropical', pop: 680000000, x: 788, y: 258,
+    path: 'M718,208 C755,198 812,196 852,212 C868,238 865,280 842,308 C820,330 775,338 740,325 C712,312 706,278 712,252 C714,232 716,212 718,208 Z' },
+  { id: 'oceania', name: 'Oceania', climate: 'temperate', pop: 43000000, x: 838, y: 382,
     climateReq: { aqua1: 2 },
-    path: 'M790,315 C824,304 870,304 898,318 C913,342 910,378 892,402 C868,424 815,430 782,420 C756,412 748,384 752,352 Z' },
-  { id: 'arctic', name: 'Arctic/Greenland', climate: 'extreme', pop: 500000, x: 230, y: 25,
+    path: 'M778,328 C822,315 875,315 902,332 C920,360 918,405 896,430 C870,452 815,458 780,444 C752,432 745,402 750,370 C754,348 758,335 778,328 Z' },
+  { id: 'arctic', name: 'Arctic/Greenland', climate: 'extreme', pop: 500000, x: 272, y: 26,
     climateReq: { cold1: 3 }, penalty: 0.2,
-    path: 'M200,12 C255,7 308,8 345,14 C352,24 350,38 341,47 C304,56 225,55 198,45 C190,35 190,18 200,12 Z' }
+    path: 'M198,8 C250,4 308,5 348,12 C356,22 354,38 342,46 C308,55 228,55 200,46 C190,38 190,18 198,8 Z' }
 ];
 
 // Color palette for 19 regions
@@ -389,7 +389,7 @@ function initGameState(virusName, virusTypeId, hostId, diffId) {
   };
 
   // Give player initial infection in start region
-  G.regionStates[G.startRegion].virusInfections['player'] = Math.floor(G.regionStates[G.startRegion].totalPop * 0.001);
+  G.regionStates[G.startRegion].virusInfections['player'] = Math.floor(G.regionStates[G.startRegion].totalPop * 0.0001);
   G.regionStates[G.startRegion].healthy -= G.regionStates[G.startRegion].virusInfections['player'];
 }
 
@@ -501,7 +501,7 @@ function spreadVirus(virusId) {
     if (!canSurvive) return;
 
     // Base spread rate
-    let spreadRate = 0.002 * getInfectivityBonus(virusId);
+    let spreadRate = 0.0004 * getInfectivityBonus(virusId);
 
     // Climate bonuses
     const climate = region.climate;
@@ -664,7 +664,7 @@ function applyMedicalResponse() {
     const infectedPct = totalInfected / region.pop;
     // Medicine kicks in when >5% infected
     if (infectedPct > 0.05) {
-      const medRate = 0.0002 * medStr * medResist * infectedPct;
+      const medRate = 0.0001 * medStr * medResist * infectedPct;
       // Reduce all viruses proportionally (drug resistance modifies per-virus)
       Object.keys(rs.virusInfections).forEach(virusId => {
         const drugR = getUpgradeLevel(virusId, 'drug1');
@@ -699,9 +699,10 @@ function computeStats() {
 
   G.totalInfected = playerInfected;
   G.regionsOwned = regionsOwned;
+  if (playerInfected > (G.peakInfected || 0)) G.peakInfected = playerInfected;
 
-  // EP rate: 1 EP per second per 1M infected
-  G.epRate = playerInfected / 1000000;
+  // EP rate: 1 EP per second per 1M infected (×0.5 to slow accumulation)
+  G.epRate = playerInfected / 1000000 * 0.5;
   G.ep += G.epRate / 20; // 20 ticks per second
 
   // Antigen shifting — periodically gain free EP bonus
@@ -710,52 +711,48 @@ function computeStats() {
 }
 
 function checkEndConditions() {
-  // Win: player owns all 18 regions (> 50% pop each)
-  if (G.regionsOwned >= REGIONS.length) {
-    endGame(true);
+  // WIN: player infected 80%+ of world population
+  const playerTotal = REGIONS.reduce((sum, r) => {
+    return sum + (G.regionStates[r.id].virusInfections['player'] || 0);
+  }, 0);
+
+  if (playerTotal / G.totalWorldPop >= 0.80) {
+    triggerWin();
     return;
   }
 
-  // Lose: player has 0 infected in all regions for 3+ consecutive ticks
-  let playerTotal = 0;
-  REGIONS.forEach(r => { playerTotal += G.regionStates[r.id].virusInfections['player'] || 0; });
-  if (playerTotal === 0) {
-    G._zeroTicks = (G._zeroTicks || 0) + 1;
-    if (G._zeroTicks > 60) endGame(false); // ~3 seconds
-  } else {
-    G._zeroTicks = 0;
+  // LOSE: player virus completely wiped out everywhere
+  if (playerTotal === 0 && G.day > 5) {
+    triggerLose('Your virus was eradicated by medicine.');
+    return;
   }
 }
 
-function endGame(won) {
+function triggerWin() {
   G.gameOver = true;
   clearInterval(gameInterval);
-
-  const totalWorldPop = G.totalWorldPop;
-  const infectedPct = ((G.totalInfected / totalWorldPop) * 100).toFixed(1);
-
-  if (won) {
-    document.getElementById('win-screen').style.display = 'flex';
-    document.getElementById('win-subtitle').textContent =
-      `${G.playerVirus.name} has dominated the world after ${G.day} days!`;
-    document.getElementById('win-stats').innerHTML = resultStatsHTML(infectedPct);
-  } else {
-    document.getElementById('lose-screen').style.display = 'flex';
-    document.getElementById('lose-subtitle').textContent =
-      `${G.playerVirus.name} was eradicated after ${G.day} days`;
-    document.getElementById('lose-stats').innerHTML = resultStatsHTML(infectedPct);
-  }
+  const days = G.day;
+  const ep = Math.floor(G.ep);
+  document.getElementById('win-subtitle').textContent =
+    `${G.playerVirus.name} infected 80% of humanity in ${days} days`;
+  document.getElementById('win-stats').innerHTML = `
+    <div class="stat-row"><span class="stat-label">DAYS</span><span class="stat-val">${days}</span></div>
+    <div class="stat-row"><span class="stat-label">EP EARNED</span><span class="stat-val">${ep}</span></div>
+    <div class="stat-row"><span class="stat-label">REGIONS</span><span class="stat-val">${G.regionsOwned}/19</span></div>
+    <div class="stat-row"><span class="stat-label">DIFFICULTY</span><span class="stat-val">${G.difficulty.name}</span></div>
+  `;
+  document.getElementById('win-screen').style.display = 'flex';
 }
 
-function resultStatsHTML(infectedPct) {
-  return `
-    <div class="stat-row"><span class="stat-label">DAYS SURVIVED</span><span class="stat-val">${G.day}</span></div>
-    <div class="stat-row"><span class="stat-label">INFECTED</span><span class="stat-val">${formatNum(G.totalInfected)}</span></div>
-    <div class="stat-row"><span class="stat-label">WORLD %</span><span class="stat-val">${infectedPct}%</span></div>
-    <div class="stat-row"><span class="stat-label">REGIONS</span><span class="stat-val">${G.regionsOwned}/18</span></div>
-    <div class="stat-row"><span class="stat-label">UPGRADES</span><span class="stat-val">${G.upgradesPurchased}</span></div>
-    <div class="stat-row"><span class="stat-label">EP EARNED</span><span class="stat-val">${Math.floor(G.ep)}</span></div>
+function triggerLose(reason) {
+  G.gameOver = true;
+  clearInterval(gameInterval);
+  document.getElementById('lose-subtitle').textContent = reason;
+  document.getElementById('lose-stats').innerHTML = `
+    <div class="stat-row"><span class="stat-label">SURVIVED</span><span class="stat-val">${G.day} days</span></div>
+    <div class="stat-row"><span class="stat-label">PEAK INFECTED</span><span class="stat-val">${(G.peakInfected || 0).toLocaleString()}</span></div>
   `;
+  document.getElementById('lose-screen').style.display = 'flex';
 }
 
 // ===================== AI VIRUS LOGIC =====================
@@ -875,7 +872,7 @@ function renderHUD() {
   document.getElementById('hud-infected').textContent = formatNum(G.totalInfected);
   const pct = (G.totalInfected / G.totalWorldPop * 100);
   document.getElementById('hud-pct').textContent = pct.toFixed(2) + '%';
-  document.getElementById('hud-regions').textContent = G.regionsOwned + '/18';
+  document.getElementById('hud-regions').textContent = G.regionsOwned + '/19';
   document.getElementById('hud-progress-fill').style.width = Math.min(100, pct * 2) + '%';
   document.getElementById('hud-day').textContent = 'DAY ' + G.day;
   document.getElementById('panel-ep').textContent = '⚡ ' + Math.floor(G.ep) + ' EP';
